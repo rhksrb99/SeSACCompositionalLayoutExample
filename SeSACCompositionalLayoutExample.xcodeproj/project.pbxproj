@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		92832C7528FE2D8900AACE4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C7428FE2D8900AACE4D /* AppDelegate.swift */; };
 		92832C7728FE2D8900AACE4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C7628FE2D8900AACE4D /* SceneDelegate.swift */; };
-		92832C7928FE2D8900AACE4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C7828FE2D8900AACE4D /* ViewController.swift */; };
+		92832C7928FE2D8900AACE4D /* SimpleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C7828FE2D8900AACE4D /* SimpleTableViewController.swift */; };
 		92832C7C28FE2D8900AACE4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92832C7A28FE2D8900AACE4D /* Main.storyboard */; };
 		92832C7E28FE2D8C00AACE4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92832C7D28FE2D8C00AACE4D /* Assets.xcassets */; };
 		92832C8128FE2D8C00AACE4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92832C7F28FE2D8C00AACE4D /* LaunchScreen.storyboard */; };
+		92832C8928FE390800AACE4D /* SimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C8828FE390800AACE4D /* SimpleCollectionViewController.swift */; };
+		92832C9528FF909200AACE4D /* DiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C9428FF909200AACE4D /* DiffableCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		92832C7128FE2D8900AACE4D /* SeSACCompositionalLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACCompositionalLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92832C7428FE2D8900AACE4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92832C7628FE2D8900AACE4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		92832C7828FE2D8900AACE4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92832C7828FE2D8900AACE4D /* SimpleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableViewController.swift; sourceTree = "<group>"; };
 		92832C7B28FE2D8900AACE4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92832C7D28FE2D8C00AACE4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92832C8028FE2D8C00AACE4D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92832C8228FE2D8C00AACE4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92832C8828FE390800AACE4D /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
+		92832C9428FF909200AACE4D /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +62,13 @@
 			children = (
 				92832C7428FE2D8900AACE4D /* AppDelegate.swift */,
 				92832C7628FE2D8900AACE4D /* SceneDelegate.swift */,
-				92832C7828FE2D8900AACE4D /* ViewController.swift */,
+				92832C7828FE2D8900AACE4D /* SimpleTableViewController.swift */,
+				92832C8828FE390800AACE4D /* SimpleCollectionViewController.swift */,
 				92832C7A28FE2D8900AACE4D /* Main.storyboard */,
 				92832C7D28FE2D8C00AACE4D /* Assets.xcassets */,
 				92832C7F28FE2D8C00AACE4D /* LaunchScreen.storyboard */,
 				92832C8228FE2D8C00AACE4D /* Info.plist */,
+				92832C9428FF909200AACE4D /* DiffableCollectionViewController.swift */,
 			);
 			path = SeSACCompositionalLayoutExample;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92832C7928FE2D8900AACE4D /* ViewController.swift in Sources */,
+				92832C9528FF909200AACE4D /* DiffableCollectionViewController.swift in Sources */,
+				92832C8928FE390800AACE4D /* SimpleCollectionViewController.swift in Sources */,
+				92832C7928FE2D8900AACE4D /* SimpleTableViewController.swift in Sources */,
 				92832C7528FE2D8900AACE4D /* AppDelegate.swift in Sources */,
 				92832C7728FE2D8900AACE4D /* SceneDelegate.swift in Sources */,
 			);
