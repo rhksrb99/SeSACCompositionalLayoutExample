@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nrk-cW-g35">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lvf-87-IDm">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -23,6 +23,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="110"/>
+        </scene>
+        <!--Shopping List View Controller-->
+        <scene sceneID="PGq-gQ-Crc">
+            <objects>
+                <viewController id="Lvf-87-IDm" customClass="ShoppingListViewController" customModule="SeSACCompositionalLayoutExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Uk-Le-l8y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oAW-NX-9wN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IfC-Ig-hSV">
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OTg-T5-8Th">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jo9-ca-FNT">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9vq-8v-y12">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XWP-Lj-IYe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IfC-Ig-hSV" firstAttribute="top" secondItem="oAW-NX-9wN" secondAttribute="bottom" id="Bgz-Na-2yj"/>
+                            <constraint firstItem="oAW-NX-9wN" firstAttribute="top" secondItem="XWP-Lj-IYe" secondAttribute="top" id="OzW-fd-dHS"/>
+                            <constraint firstItem="oAW-NX-9wN" firstAttribute="trailing" secondItem="XWP-Lj-IYe" secondAttribute="trailing" id="TXb-KT-Obc"/>
+                            <constraint firstItem="oAW-NX-9wN" firstAttribute="leading" secondItem="XWP-Lj-IYe" secondAttribute="leading" id="b4O-MO-85b"/>
+                            <constraint firstItem="XWP-Lj-IYe" firstAttribute="trailing" secondItem="IfC-Ig-hSV" secondAttribute="trailing" id="fTC-F9-8IU"/>
+                            <constraint firstItem="IfC-Ig-hSV" firstAttribute="leading" secondItem="XWP-Lj-IYe" secondAttribute="leading" id="sgd-ze-zW8"/>
+                            <constraint firstItem="XWP-Lj-IYe" firstAttribute="bottom" secondItem="IfC-Ig-hSV" secondAttribute="bottom" id="vkk-ks-kyG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="oAW-NX-9wN" id="THk-5i-ltV"/>
+                        <outlet property="shoppingCollectionView" destination="IfC-Ig-hSV" id="RlW-Oc-mxc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xth-h1-2Fa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="802"/>
         </scene>
         <!--Simple Table View Controller-->
         <scene sceneID="69D-PV-bVZ">

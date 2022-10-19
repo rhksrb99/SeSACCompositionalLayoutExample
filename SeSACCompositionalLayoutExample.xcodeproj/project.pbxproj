@@ -15,6 +15,7 @@
 		92832C8128FE2D8C00AACE4D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92832C7F28FE2D8C00AACE4D /* LaunchScreen.storyboard */; };
 		92832C8928FE390800AACE4D /* SimpleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C8828FE390800AACE4D /* SimpleCollectionViewController.swift */; };
 		92832C9528FF909200AACE4D /* DiffableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C9428FF909200AACE4D /* DiffableCollectionViewController.swift */; };
+		92832C9729000A4600AACE4D /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92832C9629000A4600AACE4D /* ShoppingListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		92832C8228FE2D8C00AACE4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92832C8828FE390800AACE4D /* SimpleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewController.swift; sourceTree = "<group>"; };
 		92832C9428FF909200AACE4D /* DiffableCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffableCollectionViewController.swift; sourceTree = "<group>"; };
+		92832C9629000A4600AACE4D /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				92832C7F28FE2D8C00AACE4D /* LaunchScreen.storyboard */,
 				92832C8228FE2D8C00AACE4D /* Info.plist */,
 				92832C9428FF909200AACE4D /* DiffableCollectionViewController.swift */,
+				92832C9629000A4600AACE4D /* ShoppingListViewController.swift */,
 			);
 			path = SeSACCompositionalLayoutExample;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			files = (
 				92832C9528FF909200AACE4D /* DiffableCollectionViewController.swift in Sources */,
 				92832C8928FE390800AACE4D /* SimpleCollectionViewController.swift in Sources */,
+				92832C9729000A4600AACE4D /* ShoppingListViewController.swift in Sources */,
 				92832C7928FE2D8900AACE4D /* SimpleTableViewController.swift in Sources */,
 				92832C7528FE2D8900AACE4D /* AppDelegate.swift in Sources */,
 				92832C7728FE2D8900AACE4D /* SceneDelegate.swift in Sources */,
