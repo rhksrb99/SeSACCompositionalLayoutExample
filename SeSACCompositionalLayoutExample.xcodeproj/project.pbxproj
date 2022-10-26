@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92053F2029077A4D00E12786 /* SubjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92053F1F29077A4D00E12786 /* SubjectViewController.swift */; };
+		92053F22290788A900E12786 /* SubjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92053F21290788A900E12786 /* SubjectViewModel.swift */; };
 		9247EC2B290622BC00B9FCD4 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 9247EC2A290622BC00B9FCD4 /* RxCocoa */; };
 		9247EC2D290622BC00B9FCD4 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9247EC2C290622BC00B9FCD4 /* RxSwift */; };
 		9247EC2F290625CB00B9FCD4 /* RXCocoaExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9247EC2E290625CB00B9FCD4 /* RXCocoaExampleViewController.swift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92053F1F29077A4D00E12786 /* SubjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewController.swift; sourceTree = "<group>"; };
+		92053F21290788A900E12786 /* SubjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectViewModel.swift; sourceTree = "<group>"; };
 		9247EC2E290625CB00B9FCD4 /* RXCocoaExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RXCocoaExampleViewController.swift; sourceTree = "<group>"; };
 		92832C7128FE2D8900AACE4D /* SeSACCompositionalLayoutExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSACCompositionalLayoutExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92832C7428FE2D8900AACE4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92053F1E29077A2D00E12786 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				9247EC2E290625CB00B9FCD4 /* RXCocoaExampleViewController.swift */,
+				92053F1F29077A4D00E12786 /* SubjectViewController.swift */,
+				92053F21290788A900E12786 /* SubjectViewModel.swift */,
+			);
+			path = Rx;
+			sourceTree = "<group>";
+		};
 		92832C6828FE2D8800AACE4D = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +102,7 @@
 		92832C7328FE2D8900AACE4D /* SeSACCompositionalLayoutExample */ = {
 			isa = PBXGroup;
 			children = (
+				92053F1E29077A2D00E12786 /* Rx */,
 				92D4794F2900CFAF00DA0DCC /* MVVMSample */,
 				92832C7428FE2D8900AACE4D /* AppDelegate.swift */,
 				92832C7628FE2D8900AACE4D /* SceneDelegate.swift */,
@@ -103,7 +118,6 @@
 				92D4795A2900EDE900DA0DCC /* APIService.swift */,
 				92D4795C2900EE3700DA0DCC /* APIKey.swift */,
 				92D4795E2900EFA100DA0DCC /* searchPhoto.swift */,
-				9247EC2E290625CB00B9FCD4 /* RXCocoaExampleViewController.swift */,
 			);
 			path = SeSACCompositionalLayoutExample;
 			sourceTree = "<group>";
@@ -206,6 +220,7 @@
 				92D479512900CFC700DA0DCC /* CObservable.swift in Sources */,
 				92832C8928FE390800AACE4D /* SimpleCollectionViewController.swift in Sources */,
 				92832C9729000A4600AACE4D /* ShoppingListViewController.swift in Sources */,
+				92053F2029077A4D00E12786 /* SubjectViewController.swift in Sources */,
 				9247EC2F290625CB00B9FCD4 /* RXCocoaExampleViewController.swift in Sources */,
 				92832C7928FE2D8900AACE4D /* SimpleTableViewController.swift in Sources */,
 				92832C7528FE2D8900AACE4D /* AppDelegate.swift in Sources */,
@@ -214,6 +229,7 @@
 				92832C7728FE2D8900AACE4D /* SceneDelegate.swift in Sources */,
 				92D479572900D78300DA0DCC /* News.swift in Sources */,
 				92D4795B2900EDE900DA0DCC /* APIService.swift in Sources */,
+				92053F22290788A900E12786 /* SubjectViewModel.swift in Sources */,
 				92D4795D2900EE3700DA0DCC /* APIKey.swift in Sources */,
 				92D479532900D13200DA0DCC /* NewsViewController.swift in Sources */,
 			);
