@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import Kingfisher
+
+import RxSwift
+import RxCocoa
 
 class DiffableCollectionViewController: UIViewController {
 
@@ -14,6 +16,8 @@ class DiffableCollectionViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var viewModel = DiffableViewModel()
+    
+    let disposeBag = DisposeBag()
     
     private var dataSource : UICollectionViewDiffableDataSource<Int, SearchResult>!
 
@@ -25,15 +29,42 @@ class DiffableCollectionViewController: UIViewController {
         configureDataSource()
         collectionView.delegate = self
         
-        searchBar.delegate = self
+        bindData()
         
-        viewModel.photoList.bind { photo in
-            var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
-            snapshot.appendSections([0])
-            snapshot.appendItems(photo.results)
-            self.dataSource.apply(snapshot)
-        }
+            
+
         
+    }
+    
+    func bindData() {
+        viewModel.photoList
+            .withUnretained(self)
+            .subscribe(onNext: { (vc, photo) in
+                var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+                snapshot.appendSections([0])
+                snapshot.appendItems(photo.results)
+                vc.dataSource.apply(snapshot)
+            }, onError: { error in
+                print("=== error: \(error)")
+            }, onCompleted: {
+                print("completed")
+            }, onDisposed: {
+                print("disposed")
+            })
+            .disposed(by: disposeBag)
+        
+        searchBar.rx.text.orEmpty
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .withUnretained(self)
+            .subscribe { (vc, value) in
+                vc.viewModel.requestSearchPhoto(query: value)
+            }
+            .disposed(by: disposeBag)
+        //        var snapshot = NSDiffableDataSourceSnapshot<Int, SearchResult>()
+        //        snapshot.appendSections([0])
+        //        snapshot.appendItems(photo.results)
+        //        self.dataSource.apply(snapshot)
     }
     
 }
@@ -53,19 +84,19 @@ extension DiffableCollectionViewController: UICollectionViewDelegate {
     
 }
 
-extension DiffableCollectionViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        viewModel.requestSearchPhoto(query: searchBar.text!)
-        
+//extension DiffableCollectionViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//
+//        viewModel.requestSearchPhoto(query: searchBar.text!)
+//
 //        var snapshot = dataSource.snapshot()
 //        snapshot.appendItems([searchBar.text!])
 //        dataSource.apply(snapshot, animatingDifferences: true)
 //        searchBar.text = ""
-    }
-    
-}
+//    }
+//
+//}
 
 extension DiffableCollectionViewController {
     
