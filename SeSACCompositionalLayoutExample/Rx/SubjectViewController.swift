@@ -33,8 +33,9 @@ class SubjectViewController: UIViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
         
-        viewModel.list
-            .bind(to: tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) { (row, element, cell) in
+        viewModel.list // VM -> VC (Output)
+            .asDriver(onErrorJustReturn: [])
+            .drive(tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = "\(element.name): \(element.age)세 (\(element.number))"
             }
             .disposed(by: disposeBag)
@@ -53,17 +54,17 @@ class SubjectViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        newButton.rx.tap
+        newButton.rx.tap // VC -> VM (Input)
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.newData()
             }
             .disposed(by: disposeBag)
         
-        searchbar.rx.text.orEmpty
-            .withUnretained(self)
+        searchbar.rx.text.orEmpty // VC -> VM (Input)
             .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) // wait
-            //.distinctUntilChanged() // 같은 값을 받지 않음
+            .distinctUntilChanged() // 같은 값을 받지 않음
+            .withUnretained(self)
             .subscribe { (vc, value) in
                 print("----\(value)----")
                 vc.viewModel.filterData(query: value)

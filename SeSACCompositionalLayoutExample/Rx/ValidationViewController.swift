@@ -28,13 +28,42 @@ class ValidationViewController: UIViewController {
     
     func bind() {
         
-        viewModel.validText
+        //After
+        let input = ValidationViewModel.Input(text: nameTextField.rx.text, tap: stepButton.rx.tap)
+        let output = viewModel.transform(input: input)
+        
+        output.text
+            .drive(validationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .bind(to: stepButton.rx.isEnabled, validationLabel.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        output.validation
+            .withUnretained(self)
+            .bind { (vc, value) in
+                let color: UIColor = value ? .lightGray : .red
+                vc.stepButton.backgroundColor = color
+            }
+            .disposed(by: disposeBag)
+        
+        output.tap
+            .bind { _ in
+                print("SHOW ALERT")
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
+        //Before
+        viewModel.validText // Output
             .asDriver()
             .drive(validationLabel.rx.text)
             .disposed(by: disposeBag)
         
         // 반복되는 코드를 상수로 선언하여 사용할 수 있다.
-        let validation = nameTextField.rx.text
+        let validation = nameTextField.rx.text // Input
             .orEmpty
             .map { $0.count >= 8 }
             .share() // Subject, Relay
@@ -57,6 +86,12 @@ class ValidationViewController: UIViewController {
             .bind { (vc, value) in
                 let color: UIColor = value ? .lightGray : .red
                 vc.stepButton.backgroundColor = color
+            }
+            .disposed(by: disposeBag)
+        
+        stepButton.rx.tap
+            .bind { _ in
+                print("SHOW ALERT")
             }
             .disposed(by: disposeBag)
         
