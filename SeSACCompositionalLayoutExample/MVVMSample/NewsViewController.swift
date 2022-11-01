@@ -18,7 +18,7 @@ class NewsViewController: UIViewController {
     
     var viewModel = NewsViewModel()
     
-    let disposeBag = DisposeBag()
+//    let disposeBag = DisposeBag()
     
     var dataSource: UICollectionViewDiffableDataSource<Int, News.NewsItem>!
     
@@ -42,20 +42,17 @@ class NewsViewController: UIViewController {
     }
     
     func bindData() {
-//
-//        viewModel.pageNumber.bind { value in
-//            self.numberTextField.text = value
-//        }
+        viewModel.pageNumber.bind { value in
+            self.numberTextField.text = value
+        }
         
-        viewModel.sample
-            .withUnretained(self)
-            .bind { (vc, value) in
-                var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
-                snapshot.appendSections([0])
-                snapshot.appendItems(value)
-                vc.dataSource.apply(snapshot, animatingDifferences: false)
-            }
-            .disposed(by: disposeBag)
+        viewModel.sample.bind { item in
+            var snapshot = NSDiffableDataSourceSnapshot<Int, News.NewsItem>()
+            snapshot.appendSections([0])
+            snapshot.appendItems(item)
+            self.dataSource.apply(snapshot, animatingDifferences: false)
+        }
+            
 
         
 //        viewModel.sample.bind { item in
@@ -98,19 +95,13 @@ extension NewsViewController {
             content.secondaryText = itemIdentifier.body
             
             cell.contentConfiguration = content
-            
         }
-        
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             
             return cell
             
         })
-        
-        
-        
     }
     
     func createLayout() -> UICollectionViewLayout {

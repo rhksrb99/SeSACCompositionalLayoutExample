@@ -30,10 +30,6 @@ class DiffableCollectionViewController: UIViewController {
         collectionView.delegate = self
         
         bindData()
-        
-            
-
-        
     }
     
     func bindData() {
@@ -74,7 +70,7 @@ extension DiffableCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
 //        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        
+//        
 //        let alert = UIAlertController(title: item, message: "클릭!", preferredStyle: .alert)
 //        let ok = UIAlertAction(title: "확인", style: .cancel)
 //        alert.addAction(ok)
@@ -110,6 +106,7 @@ extension DiffableCollectionViewController {
     }
     
     private func configureDataSource() {
+        
         let cellRegisteration = UICollectionView.CellRegistration<UICollectionViewListCell, SearchResult>(handler: { cell, indexPath, itemIdentifier in
             
             var content = UIListContentConfiguration.valueCell()
