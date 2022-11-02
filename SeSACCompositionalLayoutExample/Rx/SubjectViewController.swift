@@ -32,38 +32,53 @@ class SubjectViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ContactCell")
+        // After
+        let input = SubjectViewModel.Input(addtap: addbutton.rx.tap, resettap: resetbutton.rx.tap, newtap: newButton.rx.tap, searchText: searchbar.rx.text)
         
-        viewModel.list // VM -> VC (Output)
-            .asDriver(onErrorJustReturn: [])
+        let output = viewModel.transform(input: input)
+        
+        
+        
+        
+        
+        // Before
+//        viewModel.list // VM -> VC (Output)
+//            .asDriver(onErrorJustReturn: [])
+        
+        output.list
             .drive(tableView.rx.items(cellIdentifier: "ContactCell", cellType: UITableViewCell.self)) { (row, element, cell) in
                 cell.textLabel?.text = "\(element.name): \(element.age)세 (\(element.number))"
             }
             .disposed(by: disposeBag)
         
-        addbutton.rx.tap
+//        addbutton.rx.tap
+        output.addtap
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.fetchData()
             }
             .disposed(by: disposeBag)
         
-        resetbutton.rx.tap
+//        resetbutton.rx.tap
+        output.resettap
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.resetData()
             }
             .disposed(by: disposeBag)
         
-        newButton.rx.tap // VC -> VM (Input)
+//        newButton.rx.tap // VC -> VM (Input)
+        output.newtap
             .withUnretained(self)
             .subscribe { (vc, _) in
                 vc.viewModel.newData()
             }
             .disposed(by: disposeBag)
         
-        searchbar.rx.text.orEmpty // VC -> VM (Input)
-            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) // wait
-            .distinctUntilChanged() // 같은 값을 받지 않음
+//        searchbar.rx.text.orEmpty // VC -> VM (Input)
+//            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) // wait
+//            .distinctUntilChanged() // 같은 값을 받지 않음
+        output.searchText
             .withUnretained(self)
             .subscribe { (vc, value) in
                 print("----\(value)----")

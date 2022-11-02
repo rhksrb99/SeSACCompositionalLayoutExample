@@ -7,6 +7,18 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
+
+// associated type == generic
+protocol CommonViewModel {
+    
+    associatedtype Input
+    associatedtype Output
+    
+    func transform(input: Input) -> Output
+    
+}
+
 
 struct Contact {
     var name: String
@@ -14,7 +26,7 @@ struct Contact {
     var number: String
 }
 
-class SubjectViewModel {
+class SubjectViewModel: CommonViewModel {
     
     var contactData = [
         Contact(name: "Kidult1", age: 24, number: "01011111111"),
@@ -51,6 +63,33 @@ class SubjectViewModel {
         let result = query != "" ? contactData.filter { $0.name.contains(query) } : contactData
         list.onNext(result)
         
+    }
+
+    struct Input {
+        let addtap: ControlEvent<Void>
+        let resettap: ControlEvent<Void>
+        let newtap: ControlEvent<Void>
+        let searchText: ControlProperty<String?>
+    }
+    
+    struct Output {
+        let addtap: ControlEvent<Void>
+        let resettap: ControlEvent<Void>
+        let newtap: ControlEvent<Void>
+        let list: Driver<[Contact]>
+        let searchText: Observable<String>
+    }
+    
+    func transform(input: Input) -> Output {
+        
+        let list = list.asDriver(onErrorJustReturn: [])
+        
+        let text = input.searchText
+            .orEmpty // VC -> VM (Input)
+            .debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance) // wait
+            .distinctUntilChanged() // 같은 값을 받지 않음
+        
+        return Output(addtap: input.addtap, resettap: input.resettap, newtap: input.newtap, list: list, searchText: text)
     }
     
 }
